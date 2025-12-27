@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Melody Yin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-brand {
+            color: white;
+            font-size: 1.5em;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #667eea;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .research-item {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f7fafc;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .research-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        .meta {
+            color: #718096;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .description {
+            color: #4a5568;
+            margin-bottom: 12px;
+        }
+
+        .highlights {
+            margin-top: 12px;
+        }
+
+        .highlights li {
+            margin-left: 20px;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+
+        .award {
+            background: #fff5e6;
+            border-left: 4px solid #f6ad55;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2em;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(102, 126, 234, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                display: none;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Melody Yin</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Research Experience</h1>
+            <p>Machine Learning • Computational Biology • Drug Discovery</p>
+        </div>
+
+        <div class="content">
+            <h2>Current Research</h2>
+            
+            <div class="research-item">
+                <h3>Research Assistant - USC Viterbi School of Engineering</h3>
+                <p class="meta">Aug 2025 - Present | Los Angeles, CA</p>
+                
+                <div class="description">
+                    <strong>Intelligence & Knowledge Discovery Lab:</strong> Analyzing large language model ancestry and distillation to understand model lineage and knowledge transfer patterns. This research contributes to better understanding of how knowledge propagates through model families and how distillation affects model capabilities.
+                </div>
+                
+                <div class="description" style="margin-top: 15px;">
+                    <strong>Laboratory for ML, Health & Biomedicine:</strong> Developing deep learning-based methods to predict peptide and molecule binding, with direct applications in drug discovery and therapeutic development. Working on novel architectures that can better capture the complex interactions between biological molecules.
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Previous Research Positions</h2>
+
+            <div class="research-item">
+                <h3>Data Science Intern - Scripps Research Institute</h3>
+                <p class="meta">Jun 2024 - Dec 2024 | The Su Lab, La Jolla, CA</p>
+                <ul class="highlights">
+                    <li>Designed and implemented computational methods to characterize the impacts of longevity therapies on aging-associated decay of transcriptional order using R and statistical analysis</li>
+                    <li>Established quantitative relationships between gene set regulatory breakdowns and chronological age, providing insights into the molecular mechanisms of aging</li>
+                    <li>Presented research findings at the 10th Edition of Aging & Gerontology Conference in San Francisco to an audience of leading researchers in the field</li>
+                    <li>Collaborated with multidisciplinary team of biologists and computational scientists to validate findings across multiple datasets</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Machine Learning Intern - Stanford University</h3>
+                <p class="meta">Jun 2022 - May 2024 | The Kundaje Lab, Palo Alto, CA</p>
+                <ul class="highlights">
+                    <li>Designed and developed a novel bimodal deep learning architecture that predicts cell-specific transcription initiation by integrating histone modification data and DNA sequence information</li>
+                    <li>Improved the lab's state-of-the-art model performance by an average of 6% across all cell types, with improvements of up to 15% in specific challenging cell types</li>
+                    <li><strong>Second author on manuscript currently in peer review at Nature Genetics</strong> - Preprint released May 2024</li>
+                    <li>Selected to present research at the prestigious 2023 Sigma Xi International Forum on Research Excellence</li>
+                    <li>Conducted extensive hyperparameter optimization and ablation studies to understand model behavior and identify key architectural components</li>
+                    <li>Collaborated with experimental biologists to validate computational predictions with wet-lab experiments</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Awards & Recognition</h2>
+            <div class="award">
+                <strong>🎓 USC Viterbi Scholar</strong> - Selected for the Undergraduate Research Associates Program (URAP), recognizing outstanding research potential and academic achievement
+            </div>
+            <div class="award">
+                <strong>🏅 National Merit Scholar</strong> - Awarded for exceptional academic performance and PSAT/NMSQT scores
+            </div>
+            <div class="award">
+                <strong>🎤 Sigma Xi Presenter</strong> - Selected to present at 2023 International Forum on Research Excellence
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Melody Yin • Open to research opportunities and collaborations</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
